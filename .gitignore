@@ -1,5 +1,7 @@
 # Data: videos, extracted frames, model outputs, inspection dumps
-data/
+# (ignore the contents, not the directory itself, so .gitkeep stays trackable)
+data/*
+!data/.gitkeep
 
 # Model weights (auto-downloaded by ultralytics on first run)
 models/
