@@ -1,0 +1,27 @@
+# Data: videos, extracted frames, model outputs, inspection dumps
+data/
+
+# Model weights (auto-downloaded by ultralytics on first run)
+models/
+*.pt
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
