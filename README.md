@@ -7,8 +7,21 @@ Input: `data/soccer_match.mp4` (1 min recording, 1920x1080 @ 10 fps).
 
 ## Setup
 
+Requires Python >= 3.11.
+
+With pip and requirements.txt:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Alternatively with poetry:
+
 ```bash
 poetry install
+poetry shell   # activate the environment
 ```
 
 Model weights (`yolo26*.pt`) are downloaded automatically by ultralytics on
@@ -23,7 +36,7 @@ bounding boxes, class labels and confidence scores. By default only the
 `person` and `sports ball` classes are kept.
 
 ```bash
-poetry run python src/detect_players.py \
+python src/detect_players.py \
     --model models/yolo26l.pt \
     --output data/soccer_match_detected_l.mp4
 ```
@@ -38,7 +51,7 @@ CSV and a counts-over-time plot. Optionally dumps every torso crop for manual
 inspection with `--torso-dir`.
 
 ```bash
-poetry run python src/team_assignment.py \
+python src/team_assignment.py \
     --output data/soccer_match_teams.mp4 \
     --csv data/team_counts.csv \
     --plot data/team_counts.png
@@ -51,15 +64,8 @@ sweeps a vertical cursor across the graph in sync with playback, so the current
 position on the timeline is always visible.
 
 ```bash
-poetry run python src/combined_video.py \
+python src/combined_video.py \
     --video data/soccer_match_teams.mp4 \
     --csv data/team_counts.csv \
     --output data/soccer_match_combined.mp4
 ```
-
-## Further scripts
-
-- `src/video_to_frames.py` — extract frames from the video to `data/frames/`
-- `src/color_space_viz.py`, `src/color_space_3d.py`, `src/color_space_3d_html.py`
-  — visualize the torso color distribution in HSV/RGB space (static and
-  interactive)
